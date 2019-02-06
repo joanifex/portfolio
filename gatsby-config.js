@@ -1,6 +1,6 @@
-const config = require('./config')
+const config = require('./config');
 
-const pathPrefix = config.pathPrefix === '/' ? '' : config.pathPrefix
+const pathPrefix = config.pathPrefix === '/' ? '' : config.pathPrefix;
 
 module.exports = {
   pathPrefix: config.pathPrefix,
@@ -14,7 +14,7 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name: 'post',
+        name: 'blog',
         path: `${__dirname}/blog`,
       },
     },
@@ -67,10 +67,9 @@ module.exports = {
         background_color: config.backgroundColor,
         theme_color: config.themeColor,
         display: 'standalone',
-        icon: config.favicon,
       },
     },
     'gatsby-plugin-offline',
     'gatsby-plugin-netlify',
   ],
-}
+};
