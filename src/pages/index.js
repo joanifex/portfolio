@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link, graphql } from 'gatsby';
+import { graphql } from 'gatsby';
 import styled from 'styled-components';
 
-import { Layout, Article, Wrapper, Button, SectionTitle } from '../components';
+import { Layout, Wrapper, Button, Project, SectionTitle } from '../components';
 
 const Content = styled.div`
   grid-column: 2;
@@ -45,54 +45,37 @@ const Footer = styled.footer`
   display: grid;
   grid-column: 2;
   grid-gap: 1rem;
-  grid-template-columns: 1fr min-content min-content;
+  grid-template-columns: min-content 1fr min-content min-content;
   padding: 3rem 2rem 6rem 2rem;
-`;
-
-const FooterLink = styled.a`
-  justify-self: ${props => props.justifySelf};
 `;
 
 const IndexPage = ({
   data: {
-    allMdx: { edges: postEdges },
+    allMdx: { edges: projectEdges },
   },
 }) => (
   <Layout>
     <Wrapper>
       <Hero>
-        <h1>👋</h1>
-        <p>I&apos;m Ian, a Front-End Engineer 💻</p>
-        {/*
-        <Link to="/contact">
-          <Button big>📝{` `}Contact</Button>
-        </Link>
-        */}
+        <h1>Hi</h1>
+        <p>I&apos;m Ian, a Front-End Engineer</p>
       </Hero>
       <Content>
         <SectionTitle>Recent Projects</SectionTitle>
-        {/*
-        {postEdges.map(post => (
-          <Article
-            title={post.node.frontmatter.title}
-            date={post.node.frontmatter.date}
-            excerpt={post.node.excerpt}
-            timeToRead={post.node.timeToRead}
-            slug={post.node.fields.slug}
-            categories={post.node.frontmatter.categories}
-            key={post.node.fields.slug}
+        {projectEdges.map(project => (
+          <Project
+            excerpt={project.node.excerpt}
+            link={project.node.frontmatter.link}
+            title={project.node.frontmatter.title}
+            techs={project.node.frontmatter.techs}
           />
         ))}
-      */}
       </Content>
       <Footer>
-        <FooterLink href="mailto:wright.ianb@gmail.com">
-          wright.ianb@gmail.com
-        </FooterLink>
-        <FooterLink href="https://github.com/wrightianb">github</FooterLink>
-        <FooterLink href="https://www.linkedin.com/in/wrightianb">
-          linkedin
-        </FooterLink>
+        <a href="mailto:wright.ianb@gmail.com">wright.ianb@gmail.com</a>
+        <div />
+        <a href="https://github.com/wrightianb">github</a>
+        <a href="https://www.linkedin.com/in/wrightianb">linkedin</a>
       </Footer>
     </Wrapper>
   </Layout>
@@ -110,7 +93,12 @@ export const IndexQuery = graphql`
     allMdx {
       edges {
         node {
-          rawBody
+          frontmatter {
+            title
+            link
+            techs
+          }
+          excerpt
         }
       }
     }
