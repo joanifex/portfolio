@@ -41,6 +41,18 @@ const Hero = styled.div`
   }
 `;
 
+const Footer = styled.footer`
+  display: grid;
+  grid-column: 2;
+  grid-gap: 1rem;
+  grid-template-columns: 1fr min-content min-content;
+  padding: 3rem 2rem 6rem 2rem;
+`;
+
+const FooterLink = styled.a`
+  justify-self: ${props => props.justifySelf};
+`;
+
 const IndexPage = ({
   data: {
     allMdx: { edges: postEdges },
@@ -57,9 +69,9 @@ const IndexPage = ({
         </Link>
         */}
       </Hero>
-      {/*
       <Content>
-        <SectionTitle>Latest stories</SectionTitle>
+        <SectionTitle>Recent Projects</SectionTitle>
+        {/*
         {postEdges.map(post => (
           <Article
             title={post.node.frontmatter.title}
@@ -71,8 +83,17 @@ const IndexPage = ({
             key={post.node.fields.slug}
           />
         ))}
-      </Content>
       */}
+      </Content>
+      <Footer>
+        <FooterLink href="mailto:wright.ianb@gmail.com">
+          wright.ianb@gmail.com
+        </FooterLink>
+        <FooterLink href="https://github.com/wrightianb">github</FooterLink>
+        <FooterLink href="https://www.linkedin.com/in/wrightianb">
+          linkedin
+        </FooterLink>
+      </Footer>
     </Wrapper>
   </Layout>
 );
@@ -86,19 +107,10 @@ IndexPage.propTypes = {
 };
 export const IndexQuery = graphql`
   query IndexQuery {
-    allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMdx {
       edges {
         node {
-          fields {
-            slug
-          }
-          frontmatter {
-            title
-            date(formatString: "MM/DD/YYYY")
-            categories
-          }
-          excerpt(pruneLength: 200)
-          timeToRead
+          rawBody
         }
       }
     }
