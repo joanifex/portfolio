@@ -66,6 +66,7 @@ const IndexPage = ({
           <Project
             excerpt={project.node.excerpt}
             link={project.node.frontmatter.link}
+            slug={project.node.fields.slug}
             title={project.node.frontmatter.title}
             techs={project.node.frontmatter.techs}
           />
@@ -99,6 +100,9 @@ export const IndexQuery = graphql`
             techs
           }
           excerpt
+          fields {
+            slug
+          }
         }
       }
     }

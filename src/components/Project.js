@@ -35,11 +35,11 @@ const Excerpt = styled.p`
   margin-bottom: 1rem;
 `;
 
-const Project = ({ excerpt, link, title, techs }) => {
+const Project = ({ excerpt, link, slug, title, techs }) => {
   return (
     <Post>
       <Title>
-        <a href={link}>{title}</a>
+        <Link to={slug}>{title}</Link>
       </Title>
       <Subline>
         {techs.map((tech, i) => (
@@ -59,6 +59,7 @@ export default Project;
 Project.propTypes = {
   excerpt: PropTypes.string.isRequired,
   link: PropTypes.string.isRequired,
+  slug: PropTypes.string.isRequired,
+  techs: PropTypes.array.isRequired,
   title: PropTypes.string.isRequired,
-  categories: PropTypes.array.isRequired,
 };

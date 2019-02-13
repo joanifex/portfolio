@@ -73,6 +73,7 @@ const Project = ({
               </React.Fragment>
             ))}
           </Subline>
+          <a href={post.link}>See it</a>
           <ProjectContent>
             <MDXRenderer>{postNode.code.body}</MDXRenderer>
           </ProjectContent>
