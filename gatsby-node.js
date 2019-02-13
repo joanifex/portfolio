@@ -6,27 +6,27 @@ const wrapper = promise =>
     .then(result => ({ result, error: null }))
     .catch(error => ({ error, result: null }));
 
-// exports.onCreateNode = ({ node, actions }) => {
-//   const { createNodeField } = actions
+exports.onCreateNode = ({ node, actions }) => {
+  const { createNodeField } = actions;
 
-//   let slug
+  let slug;
 
-//   if (node.internal.type === 'Mdx') {
-//     if (
-//       Object.prototype.hasOwnProperty.call(node, 'frontmatter') &&
-//       Object.prototype.hasOwnProperty.call(node.frontmatter, 'slug')
-//     ) {
-//       slug = `/${_.kebabCase(node.frontmatter.slug)}`
-//     }
-//     if (
-//       Object.prototype.hasOwnProperty.call(node, 'frontmatter') &&
-//       Object.prototype.hasOwnProperty.call(node.frontmatter, 'title')
-//     ) {
-//       slug = `/${_.kebabCase(node.frontmatter.title)}`
-//     }
-//     createNodeField({ node, name: 'slug', value: slug })
-//   }
-// }
+  if (node.internal.type === 'Mdx') {
+    if (
+      Object.prototype.hasOwnProperty.call(node, 'frontmatter') &&
+      Object.prototype.hasOwnProperty.call(node.frontmatter, 'slug')
+    ) {
+      slug = `/${_.kebabCase(node.frontmatter.slug)}`;
+    }
+    if (
+      Object.prototype.hasOwnProperty.call(node, 'frontmatter') &&
+      Object.prototype.hasOwnProperty.call(node.frontmatter, 'title')
+    ) {
+      slug = `/${_.kebabCase(node.frontmatter.title)}`;
+    }
+    createNodeField({ node, name: 'slug', value: slug });
+  }
+};
 
 // exports.createPages = async ({ graphql, actions }) => {
 //   const { createPage } = actions
