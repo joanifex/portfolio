@@ -28,74 +28,74 @@ exports.onCreateNode = ({ node, actions }) => {
   }
 };
 
-// exports.createPages = async ({ graphql, actions }) => {
-//   const { createPage } = actions
+exports.createPages = async ({ graphql, actions }) => {
+  const { createPage } = actions;
 
-//   const postTemplate = require.resolve('./src/templates/post.js')
-//   const categoryTemplate = require.resolve('./src/templates/category.js')
+  const projectTemplate = require.resolve('./src/templates/project.js');
+  // const categoryTemplate = require.resolve('./src/templates/category.js')
 
-//   const { error, result } = await wrapper(
-//     graphql(`
-//       {
-//         allMdx {
-//           edges {
-//             node {
-//               fields {
-//                 slug
-//               }
-//               frontmatter {
-//                 title
-//                 categories
-//               }
-//             }
-//           }
-//         }
-//       }
-//     `)
-//   )
+  const { error, result } = await wrapper(
+    graphql(`
+      {
+        allMdx {
+          edges {
+            node {
+              fields {
+                slug
+              }
+              frontmatter {
+                title
+              }
+            }
+          }
+        }
+      }
+    `),
+  );
 
-//   if (!error) {
-//     const posts = result.data.allMdx.edges
+  if (!error) {
+    const projects = result.data.allMdx.edges;
 
-//     posts.forEach((edge, index) => {
-//       const next = index === 0 ? null : posts[index - 1].node
-//       const prev = index === posts.length - 1 ? null : posts[index + 1].node
+    projects.forEach((edge, index) => {
+      const next = index === 0 ? null : projects[index - 1].node;
+      const prev =
+        index === projects.length - 1 ? null : projects[index + 1].node;
 
-//       createPage({
-//         path: edge.node.fields.slug,
-//         component: postTemplate,
-//         context: {
-//           slug: edge.node.fields.slug,
-//           prev,
-//           next,
-//         },
-//       })
-//     })
+      createPage({
+        path: edge.node.fields.slug,
+        component: projectTemplate,
+        context: {
+          slug: edge.node.fields.slug,
+          prev,
+          next,
+        },
+      });
+    });
 
-//     const categorySet = new Set()
+    // const categorySet = new Set()
 
-//     _.each(posts, edge => {
-//       if (_.get(edge, 'node.frontmatter.categories')) {
-//         edge.node.frontmatter.categories.forEach(cat => {
-//           categorySet.add(cat)
-//         })
-//       }
-//     })
+    // _.each(posts, edge => {
+    //   if (_.get(edge, 'node.frontmatter.categories')) {
+    //     edge.node.frontmatter.categories.forEach(cat => {
+    //       categorySet.add(cat)
+    //     })
+    //   }
+    // })
 
-//     const categories = Array.from(categorySet)
+    // const categories = Array.from(categorySet)
 
-//     categories.forEach(category => {
-//       createPage({
-//         path: `/categories/${_.kebabCase(category)}`,
-//         component: categoryTemplate,
-//         context: {
-//           category,
-//         },
-//       })
-//     })
+    // categories.forEach(category => {
+    //   createPage({
+    //     path: `/categories/${_.kebabCase(category)}`,
+    //     component: categoryTemplate,
+    //     context: {
+    //       category,
+    //     },
+    //   })
+    // })
 
-//     return
-//   }
+    return;
+  }
 
-//   console.log(error)
-// }
+  console.log(error);
+};
