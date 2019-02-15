@@ -51,7 +51,7 @@ const Footer = styled.footer`
 
 const IndexPage = ({
   data: {
-    allMdx: { edges: projectEdges },
+    allMdx: { edges },
   },
 }) => (
   <Layout>
@@ -62,15 +62,29 @@ const IndexPage = ({
       </Hero>
       <Content>
         <SectionTitle>Recent Projects</SectionTitle>
-        {projectEdges.map(project => (
-          <Project
-            excerpt={project.node.excerpt}
-            link={project.node.frontmatter.link}
-            slug={project.node.fields.slug}
-            title={project.node.frontmatter.title}
-            techs={project.node.frontmatter.techs}
-          />
-        ))}
+        {edges
+          .filter(edge => edge.node.fields.type === 'projects')
+          .map(project => (
+            <Project
+              excerpt={project.node.excerpt}
+              link={project.node.frontmatter.link}
+              slug={project.node.fields.slug}
+              title={project.node.frontmatter.title}
+              techs={project.node.frontmatter.techs}
+            />
+          ))}
+        <SectionTitle>Professional Experience</SectionTitle>
+        {edges
+          .filter(edge => edge.node.fields.type === 'jobs')
+          .map(project => (
+            <Project
+              excerpt={project.node.excerpt}
+              link={project.node.frontmatter.link}
+              slug={project.node.fields.slug}
+              title={project.node.frontmatter.title}
+              techs={project.node.frontmatter.techs}
+            />
+          ))}
       </Content>
       <Footer>
         <a href="mailto:wright.ianb@gmail.com">wright.ianb@gmail.com</a>
@@ -102,6 +116,7 @@ export const IndexQuery = graphql`
           excerpt
           fields {
             slug
+            type
           }
         }
       }

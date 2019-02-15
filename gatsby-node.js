@@ -25,6 +25,12 @@ exports.onCreateNode = ({ node, actions }) => {
       slug = `/${_.kebabCase(node.frontmatter.title)}`;
     }
     createNodeField({ node, name: 'slug', value: slug });
+
+    ['projects', 'jobs'].forEach(type => {
+      if (node.fileAbsolutePath.includes(type)) {
+        createNodeField({ node, name: 'type', value: type });
+      }
+    });
   }
 };
 
