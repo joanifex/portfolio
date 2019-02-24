@@ -3,6 +3,7 @@ import Button from './Button';
 import Header from './Header';
 import Layout from './Layout';
 import PrevNext from './PrevNext';
+import Job from './Job';
 import Project from './Project';
 import SectionTitle from './SectionTitle';
 import SEO from './SEO';
@@ -13,6 +14,7 @@ export {
   Article,
   Button,
   Header,
+  Job,
   Layout,
   PrevNext,
   Project,

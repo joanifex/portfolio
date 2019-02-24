@@ -73,7 +73,9 @@ const Project = ({
               </React.Fragment>
             ))}
           </Subline>
-          <a href={post.link}>See it</a>
+          <a href={post.link} target="_blank">
+            👁️ See it
+          </a>
           <ProjectContent>
             <MDXRenderer>{postNode.code.body}</MDXRenderer>
           </ProjectContent>
@@ -82,7 +84,6 @@ const Project = ({
     </Layout>
   );
 };
-
 export default Project;
 
 Project.propTypes = {

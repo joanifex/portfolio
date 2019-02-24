@@ -3,7 +3,14 @@ import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
 
-import { Layout, Wrapper, Button, Project, SectionTitle } from '../components';
+import {
+  Layout,
+  Wrapper,
+  Button,
+  Job,
+  Project,
+  SectionTitle,
+} from '../components';
 
 const Content = styled.div`
   grid-column: 2;
@@ -76,13 +83,14 @@ const IndexPage = ({
         <SectionTitle>Professional Experience</SectionTitle>
         {edges
           .filter(edge => edge.node.fields.type === 'jobs')
-          .map(project => (
-            <Project
-              excerpt={project.node.excerpt}
-              link={project.node.frontmatter.link}
-              slug={project.node.fields.slug}
-              title={project.node.frontmatter.title}
-              techs={project.node.frontmatter.techs}
+          .sort((a, b) => a.node.frontmatter.date < b.node.frontmatter.date)
+          .map(job => (
+            <Job
+              excerpt={job.node.excerpt}
+              link={job.node.frontmatter.link}
+              slug={job.node.fields.slug}
+              title={job.node.frontmatter.title}
+              techs={job.node.frontmatter.techs}
             />
           ))}
       </Content>
@@ -109,6 +117,7 @@ export const IndexQuery = graphql`
       edges {
         node {
           frontmatter {
+            date
             title
             link
             techs
