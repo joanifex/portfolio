@@ -64,8 +64,11 @@ const IndexPage = ({
   <Layout>
     <Wrapper>
       <Hero>
-        <h1>Hi</h1>
-        <p>I&apos;m Ian, a Front-End Engineer</p>
+        <h1>👋 Hello</h1>
+        <p>
+          I&apos;m a software engineer specializing in front-end development,
+          JS, and React 💻
+        </p>
       </Hero>
       <Content>
         <SectionTitle>Recent Projects</SectionTitle>
