@@ -56,6 +56,11 @@ module.exports = {
               quality: 90,
               withWebp: true,
               linkImagesToOriginal: false,
+              wrapperStyle: `
+                box-shadow: 0 4px 30px black;
+                margin-bottom: 3rem;
+                width: 50%;
+              `,
             },
           },
           // TODO: Replace with "mdx-component-autolink-headers"
