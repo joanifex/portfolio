@@ -1,12 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Link, graphql } from 'gatsby';
-import styled from 'styled-components';
-import kebabCase from 'lodash/kebabCase';
-import MDXRenderer from 'gatsby-mdx/mdx-renderer';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { Link, graphql } from 'gatsby'
+import styled from 'styled-components'
+import MDXRenderer from 'gatsby-mdx/mdx-renderer'
 
-import { Layout, Wrapper, Header, Subline, SEO, PrevNext } from '../components';
-import config from '../../config';
+import { Layout, Wrapper, Header, Subline } from '../components'
+import config from '../../config'
 
 const Content = styled.article`
   grid-column: 2;
@@ -40,26 +39,22 @@ const Content = styled.article`
     margin-bottom: 1rem;
     font-size: 16px;
   }
-`;
+`
 
 const Title = styled.h1`
   margin-bottom: 1rem;
-`;
+`
 
 const ProjectContent = styled.div`
   margin-top: 4rem;
-`;
+`
 
-const Project = ({
-  pageContext: { slug, prev, next },
-  data: { mdx: postNode },
-}) => {
-  const post = postNode.frontmatter;
+const Project = ({ data: { mdx: postNode } }) => {
+  const post = postNode.frontmatter
 
   return (
     <Layout customSEO>
       <Wrapper>
-        {/*<SEO postPath={slug} postNode={postNode} article /> */}
         <Header>
           <Link to="/">{config.siteTitle}</Link>
         </Header>
@@ -79,27 +74,15 @@ const Project = ({
         </Content>
       </Wrapper>
     </Layout>
-  );
-};
-export default Project;
+  )
+}
+export default Project
 
 Project.propTypes = {
-  pageContext: PropTypes.shape({
-    slug: PropTypes.string.isRequired,
-    next: PropTypes.object,
-    prev: PropTypes.object,
-  }),
   data: PropTypes.shape({
     mdx: PropTypes.object.isRequired,
   }).isRequired,
-};
-
-Project.defaultProps = {
-  pageContext: PropTypes.shape({
-    next: null,
-    prev: null,
-  }),
-};
+}
 
 export const postQuery = graphql`
   query postBySlug($slug: String!) {
@@ -115,4 +98,4 @@ export const postQuery = graphql`
       }
     }
   }
-`;
+`

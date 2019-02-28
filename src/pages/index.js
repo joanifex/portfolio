@@ -1,16 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { graphql } from 'gatsby';
-import styled from 'styled-components';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { graphql } from 'gatsby'
+import styled from 'styled-components'
 
-import {
-  Layout,
-  Wrapper,
-  Button,
-  Job,
-  Project,
-  SectionTitle,
-} from '../components';
+import { Layout, Wrapper, Job, Project, SectionTitle } from '../components'
 
 const Content = styled.div`
   grid-column: 2;
@@ -24,7 +17,7 @@ const Content = styled.div`
     padding: 2rem 1.5rem;
   }
   overflow: hidden;
-`;
+`
 
 const Hero = styled.div`
   grid-column: 2;
@@ -46,7 +39,7 @@ const Hero = styled.div`
       font-size: 1.45rem;
     }
   }
-`;
+`
 
 const Footer = styled.footer`
   display: grid;
@@ -54,7 +47,7 @@ const Footer = styled.footer`
   grid-gap: 1rem;
   grid-template-columns: min-content 1fr min-content min-content;
   padding: 3rem 2rem 6rem 2rem;
-`;
+`
 
 const IndexPage = ({
   data: {
@@ -65,10 +58,7 @@ const IndexPage = ({
     <Wrapper>
       <Hero>
         <h1>👋 Hello</h1>
-        <p>
-          I&apos;m a software engineer specializing in front-end development,
-          JS, and React 💻
-        </p>
+        <p>I&apos;m a software engineer specializing in front-end development, JS, and React 💻</p>
       </Hero>
       <Content>
         <SectionTitle>Recent Projects</SectionTitle>
@@ -105,15 +95,15 @@ const IndexPage = ({
       </Footer>
     </Wrapper>
   </Layout>
-);
-export default IndexPage;
+)
+export default IndexPage
 IndexPage.propTypes = {
   data: PropTypes.shape({
     allMdx: PropTypes.shape({
       edges: PropTypes.array.isRequired,
     }),
   }).isRequired,
-};
+}
 export const IndexQuery = graphql`
   query IndexQuery {
     allMdx {
@@ -134,4 +124,4 @@ export const IndexQuery = graphql`
       }
     }
   }
-`;
+`

@@ -1,9 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'gatsby';
-import styled from 'styled-components';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { Link } from 'gatsby'
+import styled from 'styled-components'
 
-import Subline from './Subline';
+import Subline from './Subline'
 
 const Post = styled.article`
   display: flex;
@@ -15,7 +15,7 @@ const Post = styled.article`
     margin-top: 2rem;
     margin-bottom: 2rem;
   }
-`;
+`
 
 const Title = styled.h2`
   position: relative;
@@ -27,39 +27,36 @@ const Title = styled.h2`
       color: ${props => props.theme.colors.primaryLight};
     }
   }
-`;
+`
 
 const Excerpt = styled.p`
   grid-column: -1 / 1;
   margin-top: 1rem;
   margin-bottom: 1rem;
-`;
+`
 
-const Project = ({ excerpt, link, slug, title, techs }) => {
-  return (
-    <Post>
-      <Title>
-        <Link to={slug}>{title}</Link>
-      </Title>
-      <Subline>
-        {techs.map((tech, i) => (
-          <React.Fragment key={tech}>
-            {!!i && ', '}
-            {tech}
-          </React.Fragment>
-        ))}
-      </Subline>
-      <Excerpt>{excerpt}</Excerpt>
-    </Post>
-  );
-};
+const Project = ({ excerpt, slug, title, techs }) => (
+  <Post>
+    <Title>
+      <Link to={slug}>{title}</Link>
+    </Title>
+    <Subline>
+      {techs.map((tech, i) => (
+        <React.Fragment key={tech}>
+          {!!i && ', '}
+          {tech}
+        </React.Fragment>
+      ))}
+    </Subline>
+    <Excerpt>{excerpt}</Excerpt>
+  </Post>
+)
 
-export default Project;
+export default Project
 
 Project.propTypes = {
   excerpt: PropTypes.string.isRequired,
-  link: PropTypes.string.isRequired,
   slug: PropTypes.string.isRequired,
   techs: PropTypes.array.isRequired,
   title: PropTypes.string.isRequired,
-};
+}

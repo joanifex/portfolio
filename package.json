@@ -51,6 +51,7 @@
     "lint": "eslint . --ext .js,.jsx --ignore-path .gitignore",
     "lint:fix": "eslint . --ext .js,.jsx --fix --ignore-path .gitignore",
     "lint:ci": "yarn lint --format junit -o results/eslint/result.xml",
+    "lint:watch": "esw . -w --ext .js,.sx --ignore-path .gitignore",
     "format": "prettier \"**/*.{md,mdx} \" --write"
   },
   "devDependencies": {
@@ -62,6 +63,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.12.4",
+    "eslint-watch": "^4.0.2",
     "prettier": "^1.16.4"
   }
 }

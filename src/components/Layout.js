@@ -1,10 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { StaticQuery, graphql } from 'gatsby';
-import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { StaticQuery, graphql } from 'gatsby'
+import { ThemeProvider, createGlobalStyle } from 'styled-components'
 
-import SEO from './SEO';
-import theme from '../../config/theme';
+import SEO from './SEO'
+import theme from '../../config/theme'
 
 const GlobalStyle = createGlobalStyle`
   *,
@@ -184,7 +184,7 @@ const GlobalStyle = createGlobalStyle`
   [hidden] {
     display: none !important;
   }
-`;
+`
 
 const Layout = ({ children, customSEO }) => (
   <StaticQuery
@@ -205,15 +205,15 @@ const Layout = ({ children, customSEO }) => (
       </ThemeProvider>
     )}
   />
-);
+)
 
-export default Layout;
+export default Layout
 
 Layout.propTypes = {
   children: PropTypes.oneOfType([PropTypes.array, PropTypes.node]).isRequired,
   customSEO: PropTypes.bool,
-};
+}
 
 Layout.defaultProps = {
   customSEO: false,
-};
+}
