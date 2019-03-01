@@ -57,8 +57,8 @@ const IndexPage = ({
   <Layout>
     <Wrapper>
       <Hero>
-        <h1>👋 Hello</h1>
-        <p>I&apos;m a software engineer specializing in front-end development, JS, and React 💻</p>
+        <h1>Hello!</h1>
+        <p>I&apos;m Ian Wright, a Software Engineer specializing in front-end development, JS, and React. </p>
         <Link to="/contact">
           <Button big>
             <svg width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
