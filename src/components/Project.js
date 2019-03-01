@@ -17,6 +17,14 @@ const Post = styled.article`
   }
 `
 
+const Initiale = styled.span`
+  position: absolute;
+  font-size: 7rem;
+  transform: translate(-50%, -50%);
+  opacity: 0.08;
+  user-select: none;
+  z-index: -1;
+`
 const Title = styled.h2`
   position: relative;
   text-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
@@ -35,22 +43,26 @@ const Excerpt = styled.p`
   margin-bottom: 1rem;
 `
 
-const Project = ({ excerpt, slug, title, techs }) => (
-  <Post>
-    <Title>
-      <Link to={slug}>{title}</Link>
-    </Title>
-    <Subline>
-      {techs.map((tech, i) => (
-        <React.Fragment key={tech}>
-          {!!i && ', '}
-          {tech}
-        </React.Fragment>
-      ))}
-    </Subline>
-    <Excerpt>{excerpt}</Excerpt>
-  </Post>
-)
+const Project = ({ excerpt, slug, title, techs }) => {
+  const firstChar = title.charAt(0)
+  return (
+    <Post>
+      <Title>
+        <Initiale>{firstChar}</Initiale>
+        <Link to={slug}>{title}</Link>
+      </Title>
+      <Subline>
+        {techs.map((tech, i) => (
+          <React.Fragment key={tech}>
+            {!!i && ', '}
+            {tech}
+          </React.Fragment>
+        ))}
+      </Subline>
+      <Excerpt>{excerpt}</Excerpt>
+    </Post>
+  )
+}
 
 export default Project
 
