@@ -73,7 +73,7 @@ const IndexPage = ({
               techs={project.node.frontmatter.techs}
             />
           ))}
-        <SectionTitle>Professional Experience</SectionTitle>
+        <SectionTitle>Work</SectionTitle>
         {edges
           .filter(edge => edge.node.fields.type === 'jobs')
           .sort((a, b) => a.node.frontmatter.date < b.node.frontmatter.date)
