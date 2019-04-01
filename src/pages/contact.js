@@ -51,7 +51,7 @@ const Contact = () => (
       </Header>
       <Content>
         <h1>Contact</h1>
-        <p>I&apos;m happy to chat. Feel free to ask me anything!</p>
+        <p>I&apos;m happy to chat. Feel free to say hi!</p>
         <form name="contact-form" method="post" data-netlify="true" data-netlify-honeypot="bot-field" action="/success">
           <p>
             <label htmlFor="contact-name">
