@@ -58,7 +58,7 @@ const IndexPage = ({
     <Wrapper>
       <Hero>
         <h1>Hello!</h1>
-        <p>I&apos;m Ian Wright, a Software Engineer specializing in front-end development, JS, and React. </p>
+        <p>I&apos;m Ian Wright, a Software Engineer specializing in front-end development, JS, and React.</p>
         <Link to="/contact">
           <Button big>
             <svg width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
@@ -76,9 +76,9 @@ const IndexPage = ({
             <Project
               excerpt={project.node.excerpt}
               link={project.node.frontmatter.link}
+              role={project.node.frontmatter.role}
               slug={project.node.fields.slug}
               title={project.node.frontmatter.title}
-              techs={project.node.frontmatter.techs}
             />
           ))}
         <SectionTitle>Work</SectionTitle>
@@ -89,9 +89,9 @@ const IndexPage = ({
             <Job
               excerpt={job.node.excerpt}
               link={job.node.frontmatter.link}
+              role={job.node.frontmatter.role}
               slug={job.node.fields.slug}
               title={job.node.frontmatter.title}
-              techs={job.node.frontmatter.techs}
             />
           ))}
       </Content>
@@ -119,9 +119,9 @@ export const IndexQuery = graphql`
         node {
           frontmatter {
             date
-            title
             link
-            techs
+            role
+            title
           }
           excerpt
           fields {

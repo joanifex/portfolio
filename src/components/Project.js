@@ -43,7 +43,7 @@ const Excerpt = styled.p`
   margin-bottom: 1rem;
 `
 
-const Project = ({ excerpt, slug, title, techs }) => {
+const Project = ({ excerpt, role, slug, title }) => {
   const firstChar = title.charAt(0)
   return (
     <Post>
@@ -51,14 +51,7 @@ const Project = ({ excerpt, slug, title, techs }) => {
         <Initiale>{firstChar}</Initiale>
         <Link to={slug}>{title}</Link>
       </Title>
-      <Subline>
-        {techs.map((tech, i) => (
-          <React.Fragment key={tech}>
-            {!!i && ', '}
-            {tech}
-          </React.Fragment>
-        ))}
-      </Subline>
+      <Subline>{role}</Subline>
       <Excerpt>{excerpt}</Excerpt>
     </Post>
   )
@@ -68,7 +61,7 @@ export default Project
 
 Project.propTypes = {
   excerpt: PropTypes.string.isRequired,
+  role: PropTypes.string.isRequired,
   slug: PropTypes.string.isRequired,
-  techs: PropTypes.array.isRequired,
   title: PropTypes.string.isRequired,
 }

@@ -60,14 +60,7 @@ const Project = ({ data: { mdx: postNode } }) => {
         </Header>
         <Content>
           <Title>{post.title}</Title>
-          <Subline>
-            {post.techs.map((tech, i) => (
-              <React.Fragment key={tech}>
-                {!!i && ', '}
-                {tech}
-              </React.Fragment>
-            ))}
-          </Subline>
+          <Subline>{post.role}</Subline>
           <ProjectContent>
             <MDXRenderer>{postNode.code.body}</MDXRenderer>
           </ProjectContent>
@@ -94,7 +87,7 @@ export const postQuery = graphql`
       frontmatter {
         title
         link
-        techs
+        role
       }
     }
   }
